@@ -19,4 +19,8 @@ class BracketTest < Minitest::Test
   def test_single_round
     assert_equal true, bracket('()')
   end
+
+  def test_unclosed_fails
+    assert_equal false, bracket('{(')
+  end
 end
