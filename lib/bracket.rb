@@ -9,24 +9,16 @@ class Bracket
   def valid?
     chars = @str.chars
     chars.each do |char|
-      if is_opener?(char)
+      if is_opener?(char) || @valid_chars.include?(opener(char))
         @valid_chars << char
       else
-        if @valid_chars.include?(opener(char))
-          @valid_chars << char
-        else
-          return false
-        end
-
-        remove_matched_pairs
+        return false
       end
+
+      remove_matched_pairs
     end
 
-    if all_matched?
-      true
-    else
-      false
-    end
+    all_matched?
   end
 
   def all_matched?
