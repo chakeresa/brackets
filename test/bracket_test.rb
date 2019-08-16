@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './lib/brackets'
+require './lib/bracket'
 
 class BracketTest < Minitest::Test
   def test_init
@@ -9,17 +9,14 @@ class BracketTest < Minitest::Test
   end
 
   def test_single_curly
-    skip
     assert_equal true, bracket('{}')
   end
 
   def test_single_square
-    skip
     assert_equal true, bracket('[]')
   end
 
   def test_single_round
-    skip
     assert_equal true, bracket('()')
   end
 end

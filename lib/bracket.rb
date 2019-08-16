@@ -9,7 +9,26 @@ class Bracket
   def valid?
     chars = @str.chars
     chars.each do |char|
-      is_opener?(char)
+      if is_opener?(char)
+        @valid_chars << char
+      else
+        unless @valid_chars.include?(opener(char))
+          return false
+        end
+      end
+    end
+
+    return true
+  end
+
+  def opener(closer)
+    case closer
+    when "}"
+      "{"
+    when "]"
+      "["
+    when ")"
+      "("
     end
   end
 
