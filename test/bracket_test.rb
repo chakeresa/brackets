@@ -23,4 +23,14 @@ class BracketTest < Minitest::Test
   def test_unclosed_fails
     assert_equal false, bracket('{(')
   end
+
+  def test_mixed_types_passes
+    assert_equal true, bracket('{()}')
+    assert_equal true, bracket('({[]}{[]})')
+  end
+
+  def test_early_closing_fails
+    assert_equal false, bracket('{[)][]}')
+    assert_equal false, bracket(']')
+  end
 end
