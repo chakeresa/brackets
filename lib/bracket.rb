@@ -12,7 +12,9 @@ class Bracket
       if is_opener?(char)
         @valid_chars << char
       else
-        unless @valid_chars.include?(opener(char))
+        if @valid_chars.include?(opener(char))
+          @valid_chars << char
+        else
           return false
         end
 
@@ -20,7 +22,15 @@ class Bracket
       end
     end
 
-    return true
+    if all_matched?
+      true
+    else
+      false
+    end
+  end
+
+  def all_matched?
+    @valid_chars == []
   end
 
   def remove_matched_pairs
